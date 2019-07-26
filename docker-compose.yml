@@ -5,6 +5,18 @@ services:
     working_dir: /usr/src/myapp
     volumes:
        - .:/usr/src/myapp
+    # ports:
+      # - 8080:8080
+  db:
+    image: "mysql:5.7"
+    environment:
+      - "MYSQL_ROOT_PASSWORD=password"
+    volumes:
+      - "db-data:/var/lib/mysql"
     ports:
-      - 8080:8080
+      - "3306:3306"
+    tty: true
+    stdin_open: true
+volumes:
+  db-data:
 
